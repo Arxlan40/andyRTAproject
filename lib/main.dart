@@ -1,6 +1,6 @@
 
-import 'package:eplaza/awein.dart';
-import 'package:eplaza/splash.dart';
+import 'package:RTA/awein.dart';
+import 'package:RTA/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "mindyKNOWS",
+      title: "RTA",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

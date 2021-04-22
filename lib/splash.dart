@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:eplaza/awein.dart';
-import 'package:eplaza/home.dart';
+import 'package:RTA/awein.dart';
+import 'package:RTA/home.dart';
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
       color: Colors.white,
       child: Image.asset(
         'asset/splash.png',
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fitWidth,
       ),
     ));
   }

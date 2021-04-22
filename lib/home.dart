@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:eplaza/Notification.dart';
-import 'package:eplaza/conectivity.dart';
+import 'package:RTA/conectivity.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:RTA/Notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
+
+import 'Notification.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -68,7 +70,7 @@ class _WebViewWebPageState extends State<HomePage> {
   }
 
 
-  var URL = "https://www.mindyknows.com/";
+  var URL = "https://residentialtaxappeal.com/";
   double progress = 0;
   InAppWebViewController webView;
 
@@ -153,109 +155,111 @@ class _WebViewWebPageState extends State<HomePage> {
     }
     return WillPopScope(
       onWillPop: _onBack,
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        key: scaffoldState,
-        body: string == 'Offline'
-            ? internetdialog()
-            : ModalProgressHUD(
-              color: Colors.white,
-                inAsyncCall: _saving,
-                child: Container(
-                    child: Column(
-                        children: <Widget>[
-                  // (progress != 1.0)
-                  //     ? Column(
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         crossAxisAlignment: CrossAxisAlignment.center,
-                  //         children: [
-                  //           CircularProgressIndicator()
-                  //           // Container(
-                  //           //        height: _height / 1.1365,
-                  //           //        width: _width,
-                  //           //        child:
-                  //           //            Center(child: Image.asset('assets/splash.png')))
-                  //         ],
-                  //       )
-                  //     : null, //
-                  // Should be removed while showing
-                  Expanded(
-                    child: Container(
-                      child: InAppWebView(
-                        initialUrl: URL,
-                        initialHeaders: {},
-                        initialOptions: InAppWebViewGroupOptions(
-                          crossPlatform: InAppWebViewOptions(
-                            mediaPlaybackRequiresUserGesture: false,
-                            debuggingEnabled: true,
+      child: SafeArea(
+              child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          key: scaffoldState,
+          body: string == 'Offline'
+              ? internetdialog()
+              : ModalProgressHUD(
+                color: Colors.white,
+                  inAsyncCall: _saving,
+                  child: Container(
+                      child: Column(
+                          children: <Widget>[
+                    // (progress != 1.0)
+                    //     ? Column(
+                    //         mainAxisAlignment: MainAxisAlignment.center,
+                    //         crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           CircularProgressIndicator()
+                    //           // Container(
+                    //           //        height: _height / 1.1365,
+                    //           //        width: _width,
+                    //           //        child:
+                    //           //            Center(child: Image.asset('assets/splash.png')))
+                    //         ],
+                    //       )
+                    //     : null, //
+                    // Should be removed while showing
+                    Expanded(
+                      child: Container(
+                        child: InAppWebView(
+                          initialUrl: URL,
+                          initialHeaders: {},
+                          initialOptions: InAppWebViewGroupOptions(
+                            crossPlatform: InAppWebViewOptions(
+                              mediaPlaybackRequiresUserGesture: false,
+                              debuggingEnabled: true,
+                            ),
                           ),
-                        ),
-                        onWebViewCreated:
-                            (InAppWebViewController controller) {
-                          webView = controller;
-                        },
-                        shouldOverrideUrlLoading:
-                            (controller, request) async {
-                          var url = request.url;
-                          var uri = Uri.parse(url);
+                          onWebViewCreated:
+                              (InAppWebViewController controller) {
+                            webView = controller;
+                          },
+                          shouldOverrideUrlLoading:
+                              (controller, request) async {
+                            var url = request.url;
+                            var uri = Uri.parse(url);
 
-                          if (![
-                            "http",
-                            "https",
-                            "file",
-                            "chrome",
-                            "data",
-                            "javascript",
-                            "about"
-                          ].contains(uri.scheme)) {
-                            if (await canLaunch(url)) {
-                              // Launch the App
-                              await launch(
-                                url,
-                              );
-                              // and cancel the request
-                              return ShouldOverrideUrlLoadingAction.CANCEL;
+                            if (![
+                              "http",
+                              "https",
+                              "file",
+                              "chrome",
+                              "data",
+                              "javascript",
+                              "about"
+                            ].contains(uri.scheme)) {
+                              if (await canLaunch(url)) {
+                                // Launch the App
+                                await launch(
+                                  url,
+                                );
+                                // and cancel the request
+                                return ShouldOverrideUrlLoadingAction.CANCEL;
+                              }
                             }
-                          }
 
-                          return ShouldOverrideUrlLoadingAction.ALLOW;
-                        },
-                        onLoadStart: (InAppWebViewController controller,
-                            String url) {},
-                        onLoadStop: (InAppWebViewController controller,
-                            String url) async {
-                          setState(() {
-                            sidebar = true;
-                          });
-                        },
-                        onReceivedServerTrustAuthRequest:
-                            (InAppWebViewController controller,
-                                ServerTrustChallenge challenge) async {
-                          return ServerTrustAuthResponse(
-                              action: ServerTrustAuthResponseAction.PROCEED);
-                        },
-                        androidOnPermissionRequest:
-                            (InAppWebViewController controller, String origin,
-                                List<String> resources) async {
-                          return PermissionRequestResponse(
-                              resources: resources,
-                              action: PermissionRequestResponseAction.GRANT);
-                        },
-                        onProgressChanged: (InAppWebViewController controller,
-                            int progress) {
-                          setState(() {
-                            (progress == 100) ? _saving = false :_saving = true;
-                            this.progress = progress / 100;
-                                                          print(progress);
+                            return ShouldOverrideUrlLoadingAction.ALLOW;
+                          },
+                          onLoadStart: (InAppWebViewController controller,
+                              String url) {},
+                          onLoadStop: (InAppWebViewController controller,
+                              String url) async {
+                            setState(() {
+                              sidebar = true;
+                            });
+                          },
+                          onReceivedServerTrustAuthRequest:
+                              (InAppWebViewController controller,
+                                  ServerTrustChallenge challenge) async {
+                            return ServerTrustAuthResponse(
+                                action: ServerTrustAuthResponseAction.PROCEED);
+                          },
+                          androidOnPermissionRequest:
+                              (InAppWebViewController controller, String origin,
+                                  List<String> resources) async {
+                            return PermissionRequestResponse(
+                                resources: resources,
+                                action: PermissionRequestResponseAction.GRANT);
+                          },
+                          onProgressChanged: (InAppWebViewController controller,
+                              int progress) {
+                            setState(() {
+                              (progress == 100) ? _saving = false :_saving = true;
+                              this.progress = progress / 100;
+                                                            print(progress);
 
-                          });
-                        },
+                            });
+                          },
+                        ),
                       ),
                     ),
-                  ),
 
-                ].where((Object o) => o != null).toList())),
-              ),
+                  ].where((Object o) => o != null).toList())),
+                ),
+        ),
       ),
     ); //Remove null widgets
   }

@@ -1,34 +1,66 @@
 {
   "project_info": {
-    "project_number": "729257674514",
-    "project_id": "mindyknows",
-    "storage_bucket": "mindyknows.appspot.com"
+    "project_number": "273359215470",
+    "firebase_url": "https://rta-login-277119.firebaseio.com",
+    "project_id": "rta-login-277119",
+    "storage_bucket": "rta-login-277119.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:729257674514:android:536cb7fc435bb1059fd5cb",
+        "mobilesdk_app_id": "1:273359215470:android:a510e4fc14315d7c7e7f7f",
         "android_client_info": {
-          "package_name": "com.mindyKNOWS.app"
+          "package_name": "com.residentialtaxappeal.rta"
         }
       },
       "oauth_client": [
         {
-          "client_id": "729257674514-73g26r3n2kj7ldngj722qttevre8ejr7.apps.googleusercontent.com",
+          "client_id": "273359215470-jtpna32t879aafi0m9vngqk7eetojff8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.residentialtaxappeal.rta",
+            "certificate_hash": "439ad30a7fbc9e4b217154f35195716cdd55f5c7"
+          }
+        },
+        {
+          "client_id": "273359215470-r5j2b24q4doaup6ug9neur7tsebpl3ah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.residentialtaxappeal.rta",
+            "certificate_hash": "d27dc3737973e235e3d056b182ce5c54b2666d77"
+          }
+        },
+        {
+          "client_id": "273359215470-t65jiesbcjfdr1t20086cqo31rf3n4f0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.residentialtaxappeal.rta",
+            "certificate_hash": "0f3ee14eeae716309759a54a6e99caecf17444ad"
+          }
+        },
+        {
+          "client_id": "273359215470-maoqtusedgo84ubrvhqf9tdfv3v28bb9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDh0h8UNZ1th5u6_ntSkM_RXm-VR5uOOLs"
+          "current_key": "AIzaSyCK0yhiUrLw3jVHMl69T5UTtO2liyI1imQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "729257674514-73g26r3n2kj7ldngj722qttevre8ejr7.apps.googleusercontent.com",
+              "client_id": "273359215470-7jrbk5aj27kroqb6n83onsvmkf62uo8r.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "273359215470-g3k1spdeoqvv7dg1q38gbh71q0nr83fu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.residentialtaxappeal.rta"
+              }
             }
           ]
         }
