@@ -1,4 +1,4 @@
-package com.residentialtaxappeal.rta
+package com.residentialtaxappeal.app
 
 import io.flutter.embedding.android.FlutterActivity
 
